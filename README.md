@@ -1,6 +1,6 @@
 
-  BeAST solenoid magnetic field map (ASCII file and C++ class)
-  ============================================================
+  BeAST solenoid magnetic field map
+  =================================
 
   The field map was calculated for a coil configuration tuned to 
 provide a relatively constant 3T field inside the central part of 
@@ -14,7 +14,9 @@ symmetric and provided in the range +/-5.0 m along the beam
 direction and up to a radius of 2.5 m (however only the area up 
 to 137 cm in radius is considered to be the "inner bore").
 
-  The installation and usage hints follow.  
+  The repository contains the ASCII file with the field map and the 
+C++ class to handle it.
+
 
 Compiling
 ---------
@@ -29,10 +31,9 @@ Usage (standalone executable)
 -----------------------------
 
 ```
-  # It is assumed that libbmf.so installation directory is in the 
-  # LD_LIBRARY_PATH (Linux); the command below will import the ASCII field map 
-  # located in the ../data directory (check the path!) and return the field 
-  # value (radial and longitudinal components) at [R=3.0cm , Z=100.0cm];
+  # It is assumed that libbmf.so installation directory is in the LD_LIBRARY_PATH (Linux); 
+  # the command below will import the ASCII field map located in the ../data directory (check the path!) 
+  # and return the field value (radial and longitudinal components) at [R=3.0cm , Z=100.0cm];
 
   ./bmf-main ../data/mfield.4col.dat 3.0 100.0
 ```
@@ -46,6 +47,5 @@ Usage (shared library)
     auto bmf = new BeastMagneticField(<ASCII-map-file-location>);
     bool ret = bmf->GetFieldValue(r, z, br, bz);
 
-  # include/BeastMagneticField.h has a couple of methods to control 
-  # the behaviour of the GetFieldValue() call;
+  # include/BeastMagneticField.h has a couple of methods to control the GetFieldValue() call behaviour;
 ```
