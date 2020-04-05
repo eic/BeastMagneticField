@@ -14,7 +14,7 @@ symmetric and provided in the range +/-5.0 m along the beam
 direction and up to a radius of 2.5 m (however only the area up 
 to 137 cm in radius is considered to be the "inner bore").
 
-  The repository contains the ASCII file with the field map and the 
+  The repository contains an ASCII file with the field map and a 
 C++ class to handle it.
 
 
