@@ -15,7 +15,7 @@
 // --------------------------------------------------------------------------------------
 
 BeastMagneticField::BeastMagneticField(const char *fname, bool enforce_axial_symmetry): 
-  mCellSize(_CELL_SIZE_), mRdim(0), mZdim(0), mRmin(0.0), mZmin(0.0), 
+  mCellSize(_CELL_SIZE_), mScale(1.0), mRdim(0), mZdim(0), mRmin(0.0), mZmin(0.0), 
   mUseInterpolation(false), mFieldMap(0)
 {
   FILE *fmap = fopen(fname, "r");
@@ -165,6 +165,9 @@ bool BeastMagneticField::GetFieldValue(double r, double z, double &br, double &b
     const std::pair<double, double> &cell = mFieldMap[id];
     br = cell.first; bz = cell.second;
   } //if 
+
+  // Rescale in a single place;
+  br *= mScale; bz *= mScale;
 
   return true;
 } // BeastMagneticField::GetFieldValue()

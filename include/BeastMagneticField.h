@@ -34,6 +34,7 @@ public:
   };
 
   void UseInterpolation( void ) { mUseInterpolation = true; };
+  void SetScale(double scale)   { mScale = scale; };
   bool GetFieldValue(double x, double y, double z, double &bx, double &by, double &bz) const;
   // Field has an axial symmetry -> provide a simplified call as well;
   bool GetFieldValue(double r, double z, double &br, double &bz) const;
@@ -42,6 +43,9 @@ public:
   // Input map grid cell size; assume a square in {RZ}; may want to extract 
   // this value from the data later, so make it a variable;
   double mCellSize;
+
+  // Add some means to rescale the field internally; 1.0 per default;
+  double mScale;
 
   // Grid size in radial distance from the solenoid symmetry axis and 
   // along the symmetry axis;
