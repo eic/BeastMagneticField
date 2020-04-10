@@ -5,6 +5,12 @@
 #include <string.h>
 #include <assert.h>
 
+// Well, one can of course determine this from the input data, but what's the point?;
+#define _CELL_SIZE_               (2.0)
+
+// See the original solenoid.C script; prefer to indicate a cutoff;
+#define _CRYOSTAT_INNER_RADIUS_ (137.0)
+
 #include <BeastMagneticField.h>
 
 // For the time being keep this code, which imports the original 
@@ -98,6 +104,14 @@ BeastMagneticField::BeastMagneticField(const char *fname, bool enforce_axial_sym
   fclose(fout);
 #endif
 } // BeastMagneticField::BeastMagneticField()
+
+// --------------------------------------------------------------------------------------
+
+// Ignore the z-coordinate I guess?;
+bool BeastMagneticField::IsInsideTheBore(double x, double y/*, double z*/) const
+{
+  return (sqrt(x*x+y*y) < _CRYOSTAT_INNER_RADIUS_);
+} // BeastMagneticField::IsInsideTheBore()
 
 // --------------------------------------------------------------------------------------
 

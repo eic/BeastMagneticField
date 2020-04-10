@@ -6,12 +6,6 @@
 #ifndef _BEAST_MAGNETIC_FIELD_
 #define _BEAST_MAGNETIC_FIELD_
 
-// Well, one can of course determine this from the input data, but what's the point?;
-#define _CELL_SIZE_               (2.0)
-
-// See the original solenoid.C script; prefer to indicate a cutoff;
-#define _CRYOSTAT_INNER_RADIUS_ (137.0)
-
 struct BeastMagneticFieldCell {
 public:
   BeastMagneticFieldCell(float r, float z, float br, float bz): mR(r), mZ(z), mBR(br), mBZ(bz) {};
@@ -29,9 +23,7 @@ public:
   bool ValidMapImported( void ) const { return mFieldMap; };
 
   // Ignore the z-coordinate I guess?;
-  bool IsInsideTheBore(double x, double y/*, double z*/) {
-    return (sqrt(x*x+y*y) < _CRYOSTAT_INNER_RADIUS_);
-  };
+  bool IsInsideTheBore(double x, double y/*, double z*/) const;
 
   void UseInterpolation( void ) { mUseInterpolation = true; };
   void SetScale(double scale)   { mScale = scale; };
