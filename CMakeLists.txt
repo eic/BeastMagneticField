@@ -33,12 +33,31 @@ SET(BMF_EXE bmf-main)
 SET( BMF_SRC  source/BeastMagneticField.cc )
 SET( MAIN_SRC source/main.cc )
 
-# No dependencies whatsoever for the library itself, just ADD_LIBRARY;
+# Well, ROOT is optional;
+IF( DEFINED ENV{ROOTSYS})
+  FIND_PACKAGE(ROOT 6.14.0)
+
+  #---Define useful ROOT functions and macros (e.g. ROOT_GENERATE_DICTIONARY)
+  include(${ROOT_USE_FILE})
+
+  #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_BMF_ROOT_")
+  SET(BMF_ROOTMAP ${CMAKE_CURRENT_BINARY_DIR}/libbmf_rdict.pcm ${CMAKE_CURRENT_BINARY_DIR}/libbmf.rootmap)
+
+  SET(BMF_SRC ${BMF_SRC} G__bmf.cxx) 
+
+  ROOT_GENERATE_DICTIONARY(G__bmf BeastMagneticField.h LINKDEF include/bmfLinkDef.h)
+endif()
+
 ADD_LIBRARY( ${BMF_LIB} SHARED ${BMF_SRC} )
+# ${ROOT_LIBRARIES} will be a blank string if building with no ROOT; fine;
+TARGET_LINK_LIBRARIES(${BMF_LIB} ${ROOT_LIBRARIES} )
 
 ADD_EXECUTABLE( ${BMF_EXE} ${MAIN_SRC} )
 TARGET_LINK_LIBRARIES( ${BMF_EXE} ${BMF_LIB} )
 
 INSTALL(FILES   ${PROJECT_SOURCE_DIR}/include/BeastMagneticField.h DESTINATION include)
+IF( DEFINED ENV{ROOTSYS})
+  INSTALL(FILES ${BMF_ROOTMAP}                                     DESTINATION lib)
+endif()
 INSTALL(TARGETS ${BMF_LIB}                                         DESTINATION ${CMAKE_INSTALL_LIBDIR})
 INSTALL(TARGETS ${BMF_EXE}                                         DESTINATION ${CMAKE_INSTALL_BINDIR})

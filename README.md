@@ -49,3 +49,13 @@ Usage (shared library)
 
   # include/BeastMagneticField.h has a couple of methods to control the GetFieldValue() call behaviour;
 ```
+
+Usage (ROOT)
+------------
+
+```
+  # Make sure ROOTSYS is defined before running cmake;
+  #
+  # Refer to scripts/mfield2eve.C as an example which evaluates field projectivity 
+  # in the forward RICH volume; 
+```
