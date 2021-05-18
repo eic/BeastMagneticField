@@ -23,7 +23,7 @@ public:
   bool ValidMapImported( void ) const { return mFieldMap; };
 
   // Ignore the z-coordinate I guess?;
-  bool IsInsideTheBore(double x, double y/*, double z*/) const;
+  //bool IsInsideTheBore(double x, double y/*, double z*/) const;
 
   void UseInterpolation( void ) { mUseInterpolation = true; };
   void SetScale(double scale)   { mScale = scale; };

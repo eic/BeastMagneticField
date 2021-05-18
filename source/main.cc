@@ -19,7 +19,8 @@ int main(int argc, char *argv[])
       if (!ret)
 	printf("{r,z} coordinates out of the map region!\n");
       else 
-	printf("%8.4f %8.4f%s\n", br, bz, bmf->IsInsideTheBore(r, 0.0) ? "" : " # outside of the bore");
+	//printf("%8.4f %8.4f%s\n", br, bz, bmf->IsInsideTheBore(r, 0.0) ? "" : " # outside of the bore");
+	printf("%8.4f %8.4f [T]\n", br, bz);//, bmf->IsInsideTheBore(r, 0.0) ? "" : " # outside of the bore");
     }
     else
       printf("File '%s' either does not exist or is not a valid field map!\n", argv[1]);

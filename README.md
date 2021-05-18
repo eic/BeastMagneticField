@@ -6,7 +6,7 @@
 the new 3T solenoid field maps are provided as a 4-column ASCII file 
 (r, z, br, bz) on a 2cm NZxNR grid, will work with those ones as well. 
 
-  The repository contains an ASCII files with the field maps and a 
+  The repository contains ASCII files with the field maps and a 
 C++ class to handle it.
 
 
@@ -28,7 +28,7 @@ Usage (standalone executable)
   # and return the field value (radial and longitudinal components) at [R=3.0cm , Z=100.0cm];
 
   # assume we are still in the "build" directory;
-  ./bmf-main ../data/mfield.4col.dat 3.0 100.0
+  ./bmf-main ../data/EIC_Magnetic_Field_Map_2021_05_07_radial_coords_[cm]_[T].120000.lines.Bmap 3.0 100.0
 ```
 
 Usage (shared library)

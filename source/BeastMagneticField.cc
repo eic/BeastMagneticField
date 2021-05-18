@@ -9,7 +9,7 @@
 #define _CELL_SIZE_               (2.0)
 
 // See the original solenoid.C script; prefer to indicate a cutoff;
-#define _CRYOSTAT_INNER_RADIUS_ (137.0)
+//#define _CRYOSTAT_INNER_RADIUS_ (137.0)
 
 #include <BeastMagneticField.h>
 
@@ -108,10 +108,10 @@ BeastMagneticField::BeastMagneticField(const char *fname, bool enforce_axial_sym
 // --------------------------------------------------------------------------------------
 
 // Ignore the z-coordinate I guess?;
-bool BeastMagneticField::IsInsideTheBore(double x, double y/*, double z*/) const
-{
-  return (sqrt(x*x+y*y) < _CRYOSTAT_INNER_RADIUS_);
-} // BeastMagneticField::IsInsideTheBore()
+//bool BeastMagneticField::IsInsideTheBore(double x, double y/*, double z*/) const
+//{
+//return (sqrt(x*x+y*y) < _CRYOSTAT_INNER_RADIUS_);
+//} // BeastMagneticField::IsInsideTheBore()
 
 // --------------------------------------------------------------------------------------
 

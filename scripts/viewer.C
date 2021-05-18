@@ -25,9 +25,8 @@ void viewer(const char *fname, double minR = 0.0, double maxR = 400.0,
       double br, bz;
       bmf->GetFieldValue(minR + cellR*(ir + 0.5), minZ + cellZ*(iz + 0.5), br, bz);
 
-      // Prefer to flip sign, for the sake of a better visualization; 
-      hbz->SetBinContent(iz+1, ir+1, -bz);
-      hbr->SetBinContent(iz+1, ir+1, -br);
+      hbz->SetBinContent(iz+1, ir+1, bz);
+      hbr->SetBinContent(iz+1, ir+1, br);
       hbm->SetBinContent(iz+1, ir+1, sqrt(bz*bz+br*br));
     } //for ir..iz
 	
