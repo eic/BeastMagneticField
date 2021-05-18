@@ -59,5 +59,5 @@ INSTALL(FILES   ${PROJECT_SOURCE_DIR}/include/BeastMagneticField.h DESTINATION i
 IF( DEFINED ENV{ROOTSYS})
   INSTALL(FILES ${BMF_ROOTMAP}                                     DESTINATION lib)
 endif()
-INSTALL(TARGETS ${BMF_LIB}                                         DESTINATION ${CMAKE_INSTALL_LIBDIR})
-INSTALL(TARGETS ${BMF_EXE}                                         DESTINATION ${CMAKE_INSTALL_BINDIR})
+INSTALL(TARGETS ${BMF_LIB}                                         DESTINATION lib)
+INSTALL(TARGETS ${BMF_EXE}                                         DESTINATION bin)

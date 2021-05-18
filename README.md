@@ -1,20 +1,12 @@
 
-  BeAST solenoid magnetic field map
-  =================================
+  (BeAST) solenoid magnetic field map
+  ===================================
 
-  The field map was calculated for a coil configuration tuned to 
-provide a relatively constant 3T field inside the central part of 
-the bore (+/-1.0 m along the beam line and up 0.8 m in radius)
-, as well as to align the field lines in the forward gaseous RICH 
-volume with the charged particle trajectories originating from 
-the IP. 
+  Was originally written to import BeAST magnetic field map. As long as 
+the new 3T solenoid field maps are provided as a 4-column ASCII file 
+(r, z, br, bz) on a 2cm NZxNR grid, will work with those ones as well. 
 
-  Open source Elmer calculator was used. Field map is azimuthally
-symmetric and provided in the range +/-5.0 m along the beam 
-direction and up to a radius of 2.5 m (however only the area up 
-to 137 cm in radius is considered to be the "inner bore").
-
-  The repository contains an ASCII file with the field map and a 
+  The repository contains an ASCII files with the field maps and a 
 C++ class to handle it.
 
 
@@ -35,6 +27,7 @@ Usage (standalone executable)
   # the command below will import the ASCII field map located in the ../data directory (check the path!) 
   # and return the field value (radial and longitudinal components) at [R=3.0cm , Z=100.0cm];
 
+  # assume we are still in the "build" directory;
   ./bmf-main ../data/mfield.4col.dat 3.0 100.0
 ```
 
@@ -56,6 +49,23 @@ Usage (ROOT)
 ```
   # Make sure ROOTSYS is defined before running cmake;
   #
-  # Refer to scripts/mfield2eve.C as an example which evaluates field projectivity 
-  # in the forward RICH volume; 
+  # Refer to the visualization scripts/viewer.C as an example; assume we are still in the "build" directory;
+
+  root -l '../scripts/viewer.C("../data/EIC_Magnetic_Field_Map_2021_05_07_radial_coords_[cm]_[T].120000.lines.Bmap")' 
+
 ```
+
+  Original BeAST field map
+  ========================
+
+  The field map was calculated for a coil configuration tuned to 
+provide a relatively constant 3T field inside the central part of 
+the bore (+/-1.0 m along the beam line and up 0.8 m in radius)
+, as well as to align the field lines in the forward gaseous RICH 
+volume with the charged particle trajectories originating from 
+the IP. 
+
+  Open source Elmer calculator was used. Field map is azimuthally
+symmetric and provided in the range +/-5.0 m along the beam 
+direction and up to a radius of 2.5 m (however only the area up 
+to 137 cm in radius is considered to be the "inner bore").
