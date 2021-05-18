@@ -10,12 +10,20 @@ the new 3T solenoid field maps are provided as a 4-column ASCII file
 C++ class to handle it.
 
 
+Installation
+------------
+
+```
+  git clone https://github.com/eic/BeastMagneticField.git
+```
+
 Compiling
 ---------
 
 ```
-  mkdir build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=<your-installation-directory> -Wno-dev ..
+  cd BeastMagneticField && mkdir build && cd build
+  # Assume installation in the current build directory; replace "=." by a different path if needed;
+  cmake -DCMAKE_INSTALL_PREFIX=. -Wno-dev ..
   make install
 ```
 
